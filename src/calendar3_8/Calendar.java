@@ -11,15 +11,42 @@ public class Calendar {
 
 	public static void main(String[] args) {
 		System.out.println("반복횟수를 입력하세요.");
+		System.out.print("cal>");
 		
 		Scanner scanner = new Scanner(System.in);
+		
+		//int만 입력
+		while(!scanner.hasNextInt()) {
+			scanner.next();
+			System.out.println("숫자를 입력해주세요.");
+		}
+
 		int input = scanner.nextInt();
 		
 		for (int i=0; i<input; i++) {
 			System.out.println("월을 입력하세요.");
+			System.out.print("cal>");
 
 			Scanner scanner2 = new Scanner(System.in);
+			
+			//int만 입력
+			while(!scanner2.hasNextInt()) {
+				scanner2.next();
+				System.out.println("숫자를 입력해주세요.");
+			}
+			
 			int input2 = scanner2.nextInt();
+			
+			//3-9 풀이 소스에는 continue를 썼음. 이게 왜 생각이 안났을까.
+//			if(input2 < 1 || input2 > 12) {
+//				continue;
+//			}
+			
+			if(input2 < 1 || input2 > 12 || input2 == -1) {
+				System.out.println("Have a nice day!");
+				scanner2.close();
+				break;
+			}
 			
 			System.out.println(input2+"월은 "+MONTH_LAST_DAY[input2-1]+"일까지 있습니다.");
 		}
